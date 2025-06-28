@@ -1,9 +1,21 @@
-# Welcome to React Router!
+# Aditya Sethi's Portfolio
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A modern, responsive portfolio website showcasing my skills, experience, and projects as a Full Stack Developer.
+
+<p align="center">
+  <a href="https://adityasethi.dev" target="_blank">
+    <img src="https://img.shields.io/badge/✨%20Visit%20My%20Portfolio-adityasethi.dev-blue?style=for-the-badge&logo=react&logoColor=white&color=4F46E5" alt="Visit My Portfolio Website" />
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/React%20Router-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white" alt="React Router" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+</p>
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
-
 ## Features
 
 - 🚀 Server-side rendering
