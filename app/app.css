@@ -16,6 +16,16 @@ body {
   }
 }
 
+/* Make all interactive elements show pointer cursor */
+a, button, 
+.cursor-pointer, 
+[role="button"],
+[type="button"],
+[type="submit"],
+[type="reset"] {
+  cursor: pointer;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
