@@ -31,7 +31,7 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
             onClick={() => onScrollToSection('home')} 
             className="text-xl font-bold hover:text-primary transition-colors"
           >
-            Sethi Jyotir Aditya | Software Engineer
+            SDE Portfolio
           </button>
           
           {/* Desktop Navigation */}

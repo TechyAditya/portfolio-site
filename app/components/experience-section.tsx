@@ -7,7 +7,7 @@ export default function ExperienceSection() {
     {
       company: "PwC",
       position: "Tech Consultancy (Specialist)",
-      duration: "January 2024 - October 2024",
+      duration: "October 2024 - Present",
       responsibilities: [
         "Developed a generative AI chatbot integrated with SLCM portal",
         "Implemented comprehensive feature set including finance and academic integrations",
@@ -19,7 +19,7 @@ export default function ExperienceSection() {
     {
       company: "PwC",
       position: "Tech Consultancy (Intern)",
-      duration: "October 2024 - Present",
+      duration: "January 2024 - October 2024",
       responsibilities: [
         "Leading development and maintenance of Koha library management system",
         "Implementing CI/CD pipelines on Azure DevOps for seamless deployments",

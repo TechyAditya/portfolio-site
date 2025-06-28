@@ -19,6 +19,9 @@ export default function HeroSection({ onScrollToSection }: HeroSectionProps) {
                   Aditya
                 </span>
               </h1>
+              <h2 className="text-2xl font-medium text-muted-foreground">
+                Sethi Jyotir Aditya
+              </h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Full Stack Developer & Computer Science Engineer passionate about creating innovative solutions with modern technologies.
               </p>
