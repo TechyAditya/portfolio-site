@@ -1,22 +1,31 @@
-FROM node:20-alpine AS development-dependencies-env
-COPY . /app
-WORKDIR /app
-RUN npm ci
+# Base image with pnpm
+FROM node:20-alpine AS base
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
-FROM node:20-alpine AS production-dependencies-env
-COPY ./package.json package-lock.json /app/
+# Development dependencies stage
+FROM base AS development-dependencies-env
 WORKDIR /app
-RUN npm ci --omit=dev
+COPY . .
+RUN pnpm install
 
-FROM node:20-alpine AS build-env
-COPY . /app/
-COPY --from=development-dependencies-env /app/node_modules /app/node_modules
+# Production dependencies stage
+FROM base AS production-dependencies-env
 WORKDIR /app
-RUN npm run build
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile --prod
 
+# Build stage
+FROM base AS build-env
+WORKDIR /app
+COPY . .
+COPY --from=development-dependencies-env /app/node_modules ./node_modules
+RUN pnpm run build
+
+# Final image
 FROM node:20-alpine
-COPY ./package.json package-lock.json /app/
-COPY --from=production-dependencies-env /app/node_modules /app/node_modules
-COPY --from=build-env /app/build /app/build
+RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
-CMD ["npm", "run", "start"]
+COPY package.json pnpm-lock.yaml ./
+COPY --from=production-dependencies-env /app/node_modules ./node_modules
+COPY --from=build-env /app/build ./build
+CMD ["pnpm", "start"]
