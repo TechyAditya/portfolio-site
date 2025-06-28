@@ -16,6 +16,9 @@ A modern, responsive portfolio website showcasing my skills, experience, and pro
 </p>
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+
+[![Build and Run Dockerfile on Self-Hosted Runner](https://github.com/TechyAditya/portfolio-site/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/TechyAditya/portfolio-site/actions/workflows/docker-image.yml)
+
 ## Features
 
 - 🚀 Server-side rendering
