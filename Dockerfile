@@ -1,25 +1,22 @@
-# Use Node base image with pnpm
-FROM node:20-alpine AS base
-RUN corepack enable && corepack prepare pnpm@10.12.4 --activate
+FROM node:20-alpine AS development-dependencies-env
+COPY . /app
 WORKDIR /app
+RUN npm ci
 
-# Install only production deps
-FROM base AS production
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile --prod
-
-# Build the app
-FROM base AS build
-COPY . .
-RUN pnpm install --frozen-lockfile
-RUN pnpm run build
-
-# Final stage
-FROM base AS runtime
+FROM node:20-alpine AS production-dependencies-env
+COPY ./package.json package-lock.json /app/
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-COPY --from=production /app/node_modules ./node_modules
-COPY --from=build /app/build ./build
+RUN npm ci --omit=dev
 
-EXPOSE 3000
-CMD ["pnpm", "start"]
+FROM node:20-alpine AS build-env
+COPY . /app/
+COPY --from=development-dependencies-env /app/node_modules /app/node_modules
+WORKDIR /app
+RUN npm run build
+
+FROM node:20-alpine
+COPY ./package.json package-lock.json /app/
+COPY --from=production-dependencies-env /app/node_modules /app/node_modules
+COPY --from=build-env /app/build /app/build
+WORKDIR /app
+CMD ["npm", "run", "start"]
